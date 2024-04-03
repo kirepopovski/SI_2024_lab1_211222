@@ -1,0 +1,117 @@
+git config --global user.email "kpopovski02@gmail.com"
+git config --global user.name "Kire Popovski"
+
+
+4.
+mkdir SI_2024_lab1_211222   - направив директориум на мојот компјутер 
+cd SI_2024_lab1_211222  - влегов во креираниот директориум 
+git init  - иницијализација на git во директориумот
+
+5.
+git remote add origin https://github.com/kirepopovski/-SI_2024_lab1_211222   - поврзување на локалниот репозиториум со репозиториумот на Github 
+git remote -v  - оваа команда ја извршив само да проверам кои репозиториуми ги имам 
+
+6.
+# echo "# Kire Popovski 211222" > README.md   - креирав README.md датотека со мој потпис 
+cat README.md - проверив што имам во неа (едноставно да се осигурам, иако можеби не е прекупотребно)
+git add README.md - staged
+git commit -m "Initial commit"   - направив commit  
+
+7.
+ги додадов фајловите во локалниот репозиториум , направив git add и потoa git commit -m "Add starter code" 
+
+8. 
+git push origin master  -  направив "push" на "master" гранката на "remote repository" се со цел да бидат прикачени и достапни на GitHub
+
+9. 
+git checkout master  - најпрво ја извршив оваа команда за да проверам дали сум на master гранката (а и немам друга xd)
+git checkout -b bug1 - ја креирав bug1 гранката и автоматски сум префрлен на неа 
+git checkout master - се вратив на master гранката со цел да ја креирам bug2  која треба да се разгранува од master исто така
+git checkout -b bug2 - креирање на bug2 гранка
+
+10.
+git checkout bug1 - префрлување на гранка bug1
+
+11.
+ја поправив грешката и ги зачивав промените во кодот , а потоа
+git add SILab1_1.java - да го ставам на stage
+git commit -m "Fix wrong condition in filterOddLengthStrings"  -  направив commit со порака за променетиот фајл
+
+12.
+git checkout bug2 - префрлување на гранка bug2
+
+13.
+ја поправив грешката и ги зачував промените во кодот а потоа,
+git add SILab1_2.java - го поставив на  stage затоа што имам направвено промени во фајлот
+git commit -m "Fix wrong condition in makeBigStringFrom" - commit со порака каде што еден фајл е променет 
+
+14.
+git checkout bug1  - враќање на гранка bug1
+
+15.
+го повикав методот и ги зачував промените во кодот
+git add SILab1Main - на stage
+git commit -m "Call method ... "   - commit и добива 1 file changed , insertions..  , како и за погорните  промени 
+
+16. 
+git checkout bug2
+
+17.
+го додадов методот и го зачував фајлот,
+git add SILab1Main.java - stage
+git commit -m "Call method bigStringFrom"  - commit , 1 file changed, 1 insertion
+
+18.
+git push origin master - push на master гранката од локалното "repository" до "remote repository"
+git push origin bug1 - push на bug1 гранката од локалното "repository" до "remote repository"
+git push origin bug2 - push на bug2 гранката од локалното "repository" до "remote repository"
+
+19.
+git checkout master - префрлување на гранка master
+
+20.
+git merge bug1 - команда за спојување на гранката,
+Updating e2e7c2c..8dce96d
+Fast-forward
+ SILab1Main.java | 1 +
+ SILab1_1.java   | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-) ,
+што значи дека се изврши автоматско спојување на двете гранки без никакви конфликти. 
+Спојувањето е направено со стратегијата "Fast-forward".
+
+21.
+git push origin master  - push на "remote repository"  
+git push origin bug1 - push на "remote repository"
+git push origin bug2 - push на "remote repository" 
+
+22.
+git checkout bug2 - префрлување на гранка bug2
+
+23.
+git rebase master - команда за интегрирање на промените од една во друга гранка ,
+добив конфликт, па се справив така што го отворив фајлот и ги избришав непотребните симболи и потоа продолжив со
+git add SILab1Main.java
+git rebase --continue - добив Vi прозорец за да направам "rebase", ја оставив дадената порака за commit и со ":wq" го зачував и излегов од прозорецот:
+
+[detached HEAD e130d34] Call method makeBigStringFrom in main class
+ 1 file changed, 3 insertions(+)
+Successfully rebased and updated refs/heads/bug2.
+ 
+Беше употребена "Recursive strategy"
+
+24.
+git checkout master
+
+25.
+git merge bug2 - спојување на гранка bug2 кон master ,
+овде не се случија конфликти, спојувањето се изврши со стратегијата Fast-Forward, едноставно се ископираа промените од гранката bug2 во гранката master без конфликти
+
+26.
+git push origin --all  - имав проблем со bug2, па во следниот чекор го решавам
+
+27.
+git push bug2 --force  - присилно 
+
+28.
+git log > logs.txt  - додавање на историјата од git log во logs.txt 
+
